@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import Navbar from '../components/Navbar'
 import { swapApi } from '../services/api'
 import { toast } from 'react-toastify'
@@ -40,19 +41,21 @@ export default function Requests() {
       {!items?.length ? (
         <div className="text-sm text-gray-500">No requests.</div>
       ) : (
-        <ul className="divide-y">
+        <ul className="grid gap-4">
           {items.map((r) => (
-            <li key={r.id} className="flex flex-col gap-2 py-3 md:flex-row md:items-center md:justify-between">
-              <div>
-                <div className="text-sm">
-                  <span className="font-medium">{r.requesterName}</span> ↔ <span className="font-medium">{r.receiverName}</span>
+            <li key={r.id} className="transform rounded-lg bg-white p-4 shadow transition hover:-translate-y-1 hover:shadow-lg">
+              <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <div className="text-sm">
+                    <span className="font-medium">{r.requesterName}</span> ↔ <span className="font-medium">{r.receiverName}</span>
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {r.requesterSlot?.title} ↔ {r.receiverSlot?.title}
+                  </div>
+                  <div className="text-xs">Status: <span className="rounded bg-amber-100 px-2 py-0.5 uppercase text-amber-800">{r.status}</span></div>
                 </div>
-                <div className="text-xs text-gray-500">
-                  {r.requesterSlot?.title} ↔ {r.receiverSlot?.title}
-                </div>
-                <div className="text-xs">Status: <span className="rounded bg-amber-100 px-2 py-0.5 uppercase text-amber-800">{r.status}</span></div>
+                <div className="mt-2 md:mt-0">{actionButtons?.(r)}</div>
               </div>
-              {actionButtons?.(r)}
             </li>
           ))}
         </ul>
@@ -60,8 +63,14 @@ export default function Requests() {
     </div>
   )
 
+  List.propTypes = {
+    title: PropTypes.string.isRequired,
+    items: PropTypes.array,
+    actionButtons: PropTypes.func,
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-indigo-50">
+  <div className="min-h-screen bg-linear-to-b from-white to-indigo-50">
       <Navbar />
       <main className="mx-auto max-w-6xl space-y-4 px-4 py-6">
         {loading ? (

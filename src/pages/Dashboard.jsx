@@ -75,12 +75,19 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-indigo-50">
+  <div className="min-h-screen bg-linear-to-b from-white to-indigo-50">
       <Navbar />
       <main className="mx-auto max-w-6xl px-4 py-6">
-        <div className="mb-4 flex gap-2">
-          <button onClick={() => setTab('events')} className={`rounded px-3 py-1.5 text-sm ${tab==='events'?'bg-indigo-600 text-white':'border'}`}>My Events</button>
-          <button onClick={() => setTab('swappable')} className={`rounded px-3 py-1.5 text-sm ${tab==='swappable'?'bg-indigo-600 text-white':'border'}`}>Swappable Slots</button>
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">My Calendar</h1>
+            <p className="mt-1 text-sm text-gray-500">Manage your time slots and availability</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setTab('events')} className={`rounded-full px-4 py-2 text-sm ${tab==='events'?'bg-indigo-600 text-white':'border'}`}>My Events</button>
+            <button onClick={() => setTab('swappable')} className={`rounded-full px-4 py-2 text-sm ${tab==='swappable'?'bg-indigo-600 text-white':'border'}`}>Swappable Slots</button>
+            <button className="ml-4 rounded bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700">+ Create Event</button>
+          </div>
         </div>
         {tab === 'events' ? (
           <div className="space-y-4">

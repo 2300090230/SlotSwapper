@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { toast } from 'react-toastify'
 import Spinner from '../components/ui/Spinner'
+import PrimaryButton from '../components/ui/PrimaryButton'
+import Logo from '../components/ui/Logo'
 
 export default function Signup() {
   const navigate = useNavigate()
@@ -28,11 +30,19 @@ export default function Signup() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50 px-4">
-      <div className="w-full max-w-md rounded-xl border bg-white p-6 shadow-sm">
-        <h1 className="mb-6 text-center text-2xl font-semibold text-gray-900">Create account</h1>
-        {error && <div className="mb-4 rounded bg-red-50 p-3 text-sm text-red-700">{error}</div>}
-        <form onSubmit={onSubmit} className="space-y-4">
+    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-indigo-600 to-purple-600 px-4 py-12">
+      <div className="w-full max-w-4xl">
+        <div className="mx-auto mb-8 flex max-w-md flex-col items-center gap-4">
+          <div className="rounded-full bg-white/90 p-3 shadow-lg">
+            <Logo size={9} />
+          </div>
+          <h1 className="text-center text-3xl font-bold text-white">SlotSwapper</h1>
+          <p className="text-center text-sm text-white/90">Peer-to-Peer Time Slot Scheduling</p>
+        </div>
+        <div className="mx-auto w-full max-w-md rounded-xl bg-white p-8 shadow-xl">
+          <h2 className="mb-4 text-xl font-semibold text-gray-900">Create account</h2>
+          {error && <div className="mb-4 rounded bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+          <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="mb-1 block text-sm text-gray-700">Name</label>
             <input
@@ -63,14 +73,15 @@ export default function Signup() {
               required
             />
           </div>
-          <button disabled={loading} className="w-full flex items-center justify-center gap-2 rounded bg-indigo-600 py-2 text-white hover:bg-indigo-700 disabled:opacity-60">
+          <PrimaryButton disabled={loading} className="w-full justify-center">
             {loading && <Spinner className="h-4 w-4 border-white" />}
             <span>{loading ? 'Creating…' : 'Create account'}</span>
-          </button>
-        </form>
-        <p className="mt-4 text-center text-sm">
-          Have an account? <Link to="/login" className="text-indigo-700 underline">Sign in</Link>
-        </p>
+          </PrimaryButton>
+          </form>
+          <p className="mt-4 text-center text-sm text-gray-600">
+            Have an account? <Link to="/login" className="text-indigo-700 font-medium">Sign in</Link>
+          </p>
+        </div>
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 export default function EventForm({ initial, onSubmit, submitLabel = 'Save' }) {
   const [form, setForm] = useState(
@@ -40,6 +41,12 @@ export default function EventForm({ initial, onSubmit, submitLabel = 'Save' }) {
       </div>
     </form>
   )
+}
+
+EventForm.propTypes = {
+  initial: PropTypes.object,
+  onSubmit: PropTypes.func.isRequired,
+  submitLabel: PropTypes.string,
 }
 
 
