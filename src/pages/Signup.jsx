@@ -49,7 +49,7 @@ export default function Signup() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 transition-colors focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
-                placeholder="John Doe"
+                placeholder="Laxman Rao"
                 required
               />
             </div>
@@ -60,7 +60,7 @@ export default function Signup() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 transition-colors focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100"
-                placeholder="name@company.com"
+                placeholder="name@gmail.com"
                 required
               />
             </div>

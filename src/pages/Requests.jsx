@@ -28,7 +28,7 @@ export default function Requests() {
   const decide = async (id, accept) => {
     try {
       await swapApi.respond(id, { accept })
-      toast.success(accept ? 'Request accepted' : 'Request declined or Make it Swappable')
+      toast.success(accept ? 'Request accepted' : 'Request declined ')
       await load()
     } catch {
       toast.error('Failed to update request')

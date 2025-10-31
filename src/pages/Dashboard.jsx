@@ -70,7 +70,7 @@ export default function Dashboard() {
       await swapApi.createRequest({ mySlotId, theirSlotId })
       toast.success('Swap request sent')
     } catch {
-      toast.error('Failed to send request')
+      toast.error('Failed to send request or First make your slot swappable')
     }
   }
 
